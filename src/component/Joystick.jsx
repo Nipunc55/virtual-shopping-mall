@@ -1,14 +1,16 @@
 import React from 'react'
 import styles from '../styles/joystick.module.css'
-// import { Button, Navbar, Container, Row, Col } from 'react-bootstrap'
+import { Button, Navbar, Container, Row, Col } from 'react-bootstrap'
 
 export default function Joystick() {
   return (
-    <div>
-      <div className={styles.container}>Joystic</div>
-      {/* <Row>
-        <Col>afa</Col>
-      </Row> */}
-    </div>
+    <>
+      <div className={styles.container}>
+        <Row>
+          <Col className="d-flex bg-success h-100"></Col>
+          <Col className="bg-warning">afa</Col>
+        </Row>
+      </div>
+    </>
   )
 }

@@ -9,7 +9,7 @@ export default function Background() {
         background
         blur={0}
       />
-      <ambientLight />
+      {/* <ambientLight /> */}
     </>
   )
 }

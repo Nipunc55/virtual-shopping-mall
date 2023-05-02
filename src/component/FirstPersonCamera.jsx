@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
-
+import { OrthographicCamera } from 'three'
 import { Vector3 } from 'three'
 
 export default function FirstPersonCamera() {
@@ -8,8 +8,10 @@ export default function FirstPersonCamera() {
   const [keysDown, setKeysDown] = useState({})
   const [currentPosition, setCurrentPosition] = useState(0, 0, 0)
   useEffect(() => {
-    camera.fov = 180
-    console.log(camera.fov)
+    camera.fov = 75
+    camera.castShadow = true
+    // camera.type = 'OrthographicCamera'
+    console.log(camera)
   }, [])
 
   useEffect(() => {

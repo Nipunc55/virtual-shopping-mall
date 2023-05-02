@@ -35,11 +35,11 @@ function App() {
       <Canvas className={styles.canvas}>
         {/* <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} /> */}
         {/* <Ground /> */}
-        <Environment
+        {/* <Environment
           files="https://cdn.jsdelivr.net/gh/Sean-Bradley/React-Three-Fiber-Boilerplate@environment/public/img/venice_sunset_1k.hdr"
           background
           blur={0}
-        />
+        /> */}
 
         <PointerLockControls />
         <FirstPersonCamera />

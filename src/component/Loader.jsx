@@ -58,6 +58,9 @@ const Loader = (props) => {
 
   return (
     <>
+      <pointLight position={[0, 4, 0]} color="#ffffff" intensity={0.5} />
+      <ambientLight intensity={0.2} />
+      <directionalLight color="#ffffff" intensity={0.5} position={[0, 1, 0]} />
       <primitive
         object={gltf.scene}
         scale={props.name.scale}
