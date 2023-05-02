@@ -24,13 +24,17 @@ function App() {
     path: './3Dmodels/castle.gltf',
     scale: 1,
   }
-
+  const kitchen = {
+    position: [0, -2, 3],
+    path: './3Dmodels/Kitchen.gltf',
+    scale: 1,
+  }
   return (
     <div className="App">
       {/* <Joystick /> */}
       <Canvas className={styles.canvas}>
-        <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} />
-        <Ground />
+        {/* <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} /> */}
+        {/* <Ground /> */}
         <Environment
           files="https://cdn.jsdelivr.net/gh/Sean-Bradley/React-Three-Fiber-Boilerplate@environment/public/img/venice_sunset_1k.hdr"
           background
@@ -41,8 +45,8 @@ function App() {
         <FirstPersonCamera />
         {/* <Model /> */}
 
-        <Loader name={loard_buddha} />
-        <Loader name={castle} />
+        {/* <Loader name={loard_buddha} /> */}
+        <Loader name={kitchen} />
       </Canvas>
     </div>
   )

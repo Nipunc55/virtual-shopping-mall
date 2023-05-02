@@ -6,6 +6,11 @@ import { Vector3 } from 'three'
 export default function FirstPersonCamera() {
   const { camera } = useThree()
   const [keysDown, setKeysDown] = useState({})
+  const [currentPosition, setCurrentPosition] = useState(0, 0, 0)
+  useEffect(() => {
+    camera.fov = 180
+    console.log(camera.fov)
+  }, [])
 
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown)
@@ -27,6 +32,7 @@ export default function FirstPersonCamera() {
   })
 
   function MoveCamera(state, delta) {
+    setCurrentPosition(camera.position)
     // Move camera forward in the direction it's facing
     if (keysDown['ArrowUp']) {
       const speed = 1 // adjust the speed as needed
@@ -50,5 +56,12 @@ export default function FirstPersonCamera() {
     }
   }
 
-  return <>{null}</>
+  return (
+    <>
+      <mesh position={[currentPosition]}>
+        <boxBufferGeometry attach="geometry" args={[(1, 1, 1)]} />
+        <meshStandardMaterial attach="material" color="#4443f3" />
+      </mesh>
+    </>
+  )
 }

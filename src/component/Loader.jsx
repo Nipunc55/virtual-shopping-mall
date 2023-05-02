@@ -23,9 +23,37 @@ const Loader = (props) => {
       // action.halt(props.aniamtionDuration)
     })
   }
+
+  // Get the bounding box of the loaded model
+  try {
+    // const box = new THREE.Box3()
+
+    if (gltf.scene) {
+      // box.setFromObject(gltf.scene)
+      // console.log('box center', box.getCenter())
+    } else {
+      // Handle the case where gltf.scene is null or undefined
+      console.error('Error: GLTF scene is null or undefined')
+      // return null
+    }
+  } catch (error) {
+    console.log(error)
+  }
+
   //*********/
   useFrame((state, delta) => {
     mixer?.update(delta)
+    // console.log(state.camera.position.distanceTo(box.getCenter()))
+    // Check for collisions with other objects in the scene
+    // For example, if you have a cube mesh named "cubeMesh" in the scene:
+    // if (
+    //   state.camera.position.distanceTo(box.getCenter()) <
+    //     box.getSize().length() / 2 + 1 &&
+    //   cubeMesh.visible
+    // ) {
+    //   console.log('collision detected!')
+    //   // Do something when a collision is detected, such as resetting the scene or playing an animation
+    // }
   })
 
   return (
