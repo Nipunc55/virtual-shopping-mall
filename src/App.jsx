@@ -20,11 +20,11 @@ function App() {
     scale: 2,
   }
   const castle = {
-    position: [5, -1, 0],
+    position: [5, -10, 0],
     path: './3Dmodels/castle.gltf',
     scale: 1,
   }
-  const texture = new THREE.TextureLoader().load(bg_360)
+
   return (
     <div className="App">
       {/* <Joystick /> */}
