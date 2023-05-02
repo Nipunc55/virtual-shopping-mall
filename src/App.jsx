@@ -15,7 +15,7 @@ import Loader from './component/Loader'
 
 function App() {
   const loard_buddha = {
-    position: [-1, -1, 4],
+    position: [-5, -1, -5],
     path: './3Dmodels/buddha.gltf',
     scale: 2,
   }
