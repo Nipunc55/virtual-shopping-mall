@@ -7,7 +7,7 @@ import styles from './styles/canvas.module.css'
 import Ground from './component/Ground'
 import { Environment, PointerLockControls } from '@react-three/drei'
 import FirstPersonCamera from './component/FirstPersonCamera'
-import bg_360 from './assets/images/bg_360.jpg'
+
 import * as THREE from 'three'
 import Joystick from './component/Joystick'
 import Model from './component/ObjLoader'
