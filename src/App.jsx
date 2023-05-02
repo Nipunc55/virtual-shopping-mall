@@ -16,23 +16,31 @@ import Loader from './component/Loader'
 
 function App() {
   const loard_buddha = {
-    position: [0, -1, 0],
+    position: [-1, -1, 4],
     path: './3Dmodels/buddha.gltf',
     scale: 2,
+  }
+  const castle = {
+    position: [5, -1, 0],
+    path: './3Dmodels/castle.gltf',
+    scale: 1,
   }
   const texture = new THREE.TextureLoader().load(bg_360)
   return (
     <div className="App">
-      <Joystick />
+      {/* <Joystick /> */}
       <Canvas className={styles.canvas}>
         <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} />
         <Ground />
-        {/* <Environment files={bg_360} background blur={0} /> */}
+        <Environment  files="https://cdn.jsdelivr.net/gh/Sean-Bradley/React-Three-Fiber-Boilerplate@environment/public/img/venice_sunset_1k.hdr"
+ background blur={0} />
 
         <PointerLockControls />
         <FirstPersonCamera />
         {/* <Model /> */}
+
         <Loader name={loard_buddha} />
+        <Loader name={castle} />
       </Canvas>
     </div>
   )
