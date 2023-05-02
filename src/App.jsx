@@ -3,9 +3,8 @@ import './App.css'
 import { Canvas, useFrame } from '@react-three/fiber'
 import Box from './component/Box'
 import styles from './styles/canvas.module.css'
-import CameraControls from './component/CameraControls'
+
 import Ground from './component/Ground'
-import Background from './component/background'
 import { Environment, PointerLockControls } from '@react-three/drei'
 import FirstPersonCamera from './component/FirstPersonCamera'
 import bg_360 from './assets/images/bg_360.jpg'
@@ -32,8 +31,11 @@ function App() {
       <Canvas className={styles.canvas}>
         <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} />
         <Ground />
-        <Environment  files="https://cdn.jsdelivr.net/gh/Sean-Bradley/React-Three-Fiber-Boilerplate@environment/public/img/venice_sunset_1k.hdr"
- background blur={0} />
+        <Environment
+          files="https://cdn.jsdelivr.net/gh/Sean-Bradley/React-Three-Fiber-Boilerplate@environment/public/img/venice_sunset_1k.hdr"
+          background
+          blur={0}
+        />
 
         <PointerLockControls />
         <FirstPersonCamera />
