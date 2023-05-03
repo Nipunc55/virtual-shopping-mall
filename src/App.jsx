@@ -5,7 +5,11 @@ import Box from './component/Box'
 import styles from './styles/canvas.module.css'
 
 import Ground from './component/Ground'
-import { Environment, PointerLockControls } from '@react-three/drei'
+import {
+  Environment,
+  PointerLockControls,
+  OrbitControls,
+} from '@react-three/drei'
 import FirstPersonCamera from './component/FirstPersonCamera'
 
 import * as THREE from 'three'
@@ -31,7 +35,7 @@ function App() {
   }
   return (
     <div className="App">
-      {/* <Joystick /> */}
+      <Joystick />
       <Canvas className={styles.canvas}>
         {/* <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} /> */}
         {/* <Ground /> */}
@@ -40,8 +44,8 @@ function App() {
           background
           blur={0}
         /> */}
-
-        <PointerLockControls />
+        <OrbitControls />
+        {/* <PointerLockControls /> */}
         <FirstPersonCamera />
         {/* <Model /> */}
 
