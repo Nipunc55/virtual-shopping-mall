@@ -35,7 +35,7 @@ function App() {
   }
   return (
     <div className="App">
-      <Joystick />
+      {/* <Joystick /> */}
       <Canvas className={styles.canvas}>
         {/* <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} /> */}
         {/* <Ground /> */}
