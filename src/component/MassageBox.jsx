@@ -15,15 +15,20 @@ export default function MassageBox({ obj, massage, optionValue }) {
     optionValue(event.target.value / 100)
   }
   return (
-    <div className={styles.container}>
-      {massage}
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={value}
-        onChange={sliderChange}
-      />
-    </div>
+    <>
+      {obj != null ? (
+        <div className={styles.container}>
+          {'Adjust the shine of each object : '}
+          {obj?.name}
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={value}
+            onChange={sliderChange}
+          />
+        </div>
+      ) : null}
+    </>
   )
 }
