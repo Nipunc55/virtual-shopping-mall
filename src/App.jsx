@@ -16,6 +16,7 @@ import * as THREE from 'three'
 import Joystick from './component/Joystick'
 import Model from './component/ObjLoader'
 import Loader from './component/Loader'
+import ObjectClickable from './component/ObjectClickable'
 
 function App() {
   const loard_buddha = {
@@ -44,7 +45,7 @@ function App() {
           background
           blur={0}
         /> */}
-        <OrbitControls />
+        {/* <ObjectClickable /> */}
         {/* <PointerLockControls /> */}
         <FirstPersonCamera />
         {/* <Model /> */}

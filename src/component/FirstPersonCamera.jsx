@@ -1,9 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { OrthographicCamera } from 'three'
 import { Vector3 } from 'three'
+import JoystickController from 'joystick-controller'
+// import './DeviceOrientationControls'
+// import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls.js'
+
+// import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls'
+// const Joys = new JoystickController({}, (data) => {
+//   console.log(data)
+// })
 
 export default function FirstPersonCamera() {
+  const cameraRef = useRef()
   const { camera } = useThree()
   const [keysDown, setKeysDown] = useState({})
   const [currentPosition, setCurrentPosition] = useState(0, 0, 0)
@@ -23,6 +32,7 @@ export default function FirstPersonCamera() {
     }
   }, [onKeyDown, onKeyUp])
   function onKeyDown(event) {
+    console.log(event.code)
     setKeysDown((keysDown) => ({ ...keysDown, [event.code]: true }))
   }
 

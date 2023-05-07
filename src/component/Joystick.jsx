@@ -6,10 +6,27 @@ export default function Joystick() {
   return (
     <>
       <div className={styles.container}>
-        <Row>
-          <Col className="d-flex bg-success h-100"></Col>
+        {/* <Joys /> */}
+        {/* <Row className="h-100 ">
+          <Col className="d-flex bg-success align-items-center flex-column justify-content-center">
+            <Row>
+              <Col className="bg-warning">1</Col>
+              <Col>2</Col>
+              <Col>3</Col>
+            </Row>
+            <Row>
+              <Col>4</Col>
+              <Col>5</Col>
+              <Col>6</Col>
+            </Row>
+            <Row>
+              <Col>7</Col>
+              <Col>8</Col>
+              <Col>9</Col>
+            </Row>
+          </Col>
           <Col className="bg-warning">afa</Col>
-        </Row>
+        </Row> */}
       </div>
     </>
   )
