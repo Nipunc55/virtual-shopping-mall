@@ -8,11 +8,13 @@ import { OrbitControls, useTexture } from '@react-three/drei'
 
 const Loader = (props) => {
   const [center, setCenter] = useState([0, 0, 0])
+  const [clickedObject, setClickedObject] = useState(null)
   const mesh = useRef()
   const orbitRef = useRef()
   const { camera } = useThree()
   const gltf = useLoader(GLTFLoader, props.name.path)
   const raycaster = new THREE.Raycaster()
+  //console.log('loader rendered')
   useEffect(() => {
     let mixer
     if (gltf.animations.length) {
@@ -30,8 +32,13 @@ const Loader = (props) => {
     }
   }, [])
   useEffect(() => {
+    console.log(props.option)
+    if (clickedObject) {
+      clickedObject.material.metalness = props.option
+    }
+
     // console.log(center)
-  }, [center])
+  }, [props.option])
 
   /**
    * get the center of clicked object
@@ -54,7 +61,10 @@ const Loader = (props) => {
       const clickedObject = intersects[0].object
       if (clickedObject) {
         const { name, position } = clickedObject
-        console.log(name)
+        props.onDataReceve(clickedObject)
+        setClickedObject(clickedObject)
+        //clickedObject.material.metalness = 1
+        //console.log(clickedObject)
         const worldPosition = new THREE.Vector3().copy(clickedObject.position)
         clickedObject.parent.localToWorld(worldPosition)
         setCenter(worldPosition)

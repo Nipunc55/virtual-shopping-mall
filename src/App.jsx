@@ -17,8 +17,12 @@ import Joystick from './component/Joystick'
 import Model from './component/ObjLoader'
 import Loader from './component/Loader'
 import ObjectClickable from './component/ObjectClickable'
+import MassageBox from './component/MassageBox'
 
 function App() {
+  const [massage, setMassage] = useState('Adjust the shine of each object : ')
+  const [obj, setObj] = useState(null)
+  const [option, setOptionValue] = useState(0)
   const loard_buddha = {
     position: [-5, -1, -5],
     path: './3Dmodels/buddha.gltf',
@@ -37,6 +41,13 @@ function App() {
   return (
     <div className="App">
       {/* <Joystick /> */}
+      <MassageBox
+        massage={massage}
+        obj={obj}
+        optionValue={(data) => {
+          setOptionValue(data)
+        }}
+      />
       <Canvas className={styles.canvas}>
         {/* <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} /> */}
         {/* <Ground /> */}
@@ -51,7 +62,13 @@ function App() {
         {/* <Model /> */}
 
         {/* <Loader name={loard_buddha} /> */}
-        <Loader name={kitchen} />
+        <Loader
+          option={option}
+          name={kitchen}
+          onDataReceve={(obj) => {
+            setObj(obj)
+          }}
+        />
       </Canvas>
     </div>
   )
