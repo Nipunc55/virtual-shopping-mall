@@ -18,6 +18,7 @@ import Model from './component/ObjLoader'
 import Loader from './component/Loader'
 import ObjectClickable from './component/ObjectClickable'
 import MassageBox from './component/MassageBox'
+import ToolBox from './component/ToolBox'
 
 function App() {
   const [massage, setMassage] = useState('Adjust the shine of each object : ')
@@ -41,13 +42,13 @@ function App() {
   return (
     <div className="App">
       {/* <Joystick /> */}
-      <MassageBox
-        massage={massage}
+      <ToolBox
         obj={obj}
         optionValue={(data) => {
           setOptionValue(data)
         }}
       />
+      {/* <MassageBox massage={massage} /> */}
       <Canvas className={styles.canvas}>
         {/* <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} /> */}
         {/* <Ground /> */}

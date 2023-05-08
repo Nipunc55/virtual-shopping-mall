@@ -32,9 +32,10 @@ const Loader = (props) => {
     }
   }, [])
   useEffect(() => {
-    console.log(props.option)
+    const { metalness, roughness } = props.option
     if (clickedObject) {
-      clickedObject.material.metalness = props.option
+      clickedObject.material.metalness = metalness
+      clickedObject.material.roughness = roughness
     }
 
     // console.log(center)
