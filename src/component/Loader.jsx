@@ -14,23 +14,7 @@ const Loader = (props) => {
   const { camera } = useThree()
   const gltf = useLoader(GLTFLoader, props.name.path)
   const raycaster = new THREE.Raycaster()
-  //console.log('loader rendered')
-  useEffect(() => {
-    let mixer
-    if (gltf.animations.length) {
-      mixer = new THREE.AnimationMixer(gltf.scene)
-      const action = mixer.clipAction(gltf.animations[0])
-      action.play()
-      // action.halt(8)
-      gltf.animations.forEach((clip) => {
-        const action = mixer.clipAction(clip)
-        console.log(clip)
-        // action.play()
 
-        // action.halt(props.aniamtionDuration)
-      })
-    }
-  }, [])
   useEffect(() => {
     const { metalness, roughness } = props.option
     if (clickedObject) {
@@ -40,7 +24,25 @@ const Loader = (props) => {
 
     // console.log(center)
   }, [props.option])
+  useEffect(() => {
+   if(clickedObject)PlayAnimation()
+  }, [clickedObject])
+  
+function PlayAnimation(){
+ if (clickedObject.animations.length) {
+      mixer = new THREE.AnimationMixer(gltf.scene)
+      const action = mixer.clipAction(gltf.animations[0])
+      action.play()
+      // action.halt(8)
+      gltf.animations.forEach((clip) => {
+        const action = mixer.clipAction(clip)
+        console.log(clip)
+         action.play()
 
+        // action.halt(props.aniamtionDuration)
+      })
+    }
+}
   /**
    * get the center of clicked object
    * @param {*} event
@@ -120,10 +122,13 @@ const Loader = (props) => {
   return (
     <>
       <pointLight position={[0, 4, 0]} color="#C9FF7C" intensity={0.6} />
-      <pointLight position={[0, 1, 0]} color="#001BFF" intensity={0.6} />
-      <ambientLight intensity={0.2} />
+      <pointLight position={[0, 1, 0]} color="#001BFF" intensity={0.8} />
+      {/* <ambientLight intensity={0.2} /> */}
       <directionalLight color="#ffffff" intensity={0.5} position={[0, 1, 0]} />
-      <OrbitControls ref={orbitRef} target={center} />
+      <OrbitControls
+       maxPolarAngle={Math.PI / 2} // Limit rotation to 90 degrees (pi/2) on the X-axis
+        minPolarAngle={Math.PI / 3} // Optionally, you can set a minimum polar angle
+         ref={orbitRef} target={center} />
       <primitive
         ref={mesh}
         object={gltf.scene}

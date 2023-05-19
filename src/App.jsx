@@ -24,14 +24,10 @@ function App() {
   const [massage, setMassage] = useState('Adjust the shine of each object : ')
   const [obj, setObj] = useState(null)
   const [option, setOptionValue] = useState(0)
-  const loard_buddha = {
-    position: [-5, -1, -5],
-    path: './3Dmodels/buddha.gltf',
-    scale: 2,
-  }
-  const castle = {
-    position: [5, -10, 0],
-    path: './3Dmodels/castle.gltf',
+
+  const room = {
+    position: [0, 0, 0],
+    path: './3Dmodels/room_new.gltf',
     scale: 1,
   }
   const kitchen = {
@@ -65,7 +61,7 @@ function App() {
         {/* <Loader name={loard_buddha} /> */}
         <Loader
           option={option}
-          name={kitchen}
+          name={room}
           onDataReceve={(obj) => {
             setObj(obj)
           }}
