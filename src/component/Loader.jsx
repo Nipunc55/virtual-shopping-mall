@@ -75,48 +75,11 @@ function PlayAnimation(){
     }
   }
 
-  // Get the bounding box of the loaded model
-  // try {
-  //   // const box = new THREE.Box3()
 
-  //   if (gltf.scene) {
-  //     // box.setFromObject(gltf.scene)
-  //     // console.log('box center', box.getCenter())
-  //   } else {
-  //     // Handle the case where gltf.scene is null or undefined
-  //     console.error('Error: GLTF scene is null or undefined')
-  //     // return null
-  //   }
-  // } catch (error) {
-  //   console.log(error)
-  // }
-  // gltf.scene.traverse((child) => {
-  //   if (child.isMesh) {
-  //     // Apply materials to the mesh
-  //     child.material = new THREE.MeshStandardMaterial({
-  //       color: 0xffffff, // Set the color to white
-  //       map: child.material.map, // Use the existing texture map
-  //       metalnessMap: child.material.map, // Use the existing texture map as the metalness map
-  //       metalness: 0.6, // Increase the metalness to 1
-  //       roughness: 0.5,
-  //     })
-  //   }
-  // })
   //*********/
   useFrame((state, delta) => {
     orbitRef.current.update()
-    // mixer?.update(delta)
-    // console.log(state.camera.position.distanceTo(box.getCenter()))
-    // Check for collisions with other objects in the scene
-    // For example, if you have a cube mesh named "cubeMesh" in the scene:
-    // if (
-    //   state.camera.position.distanceTo(box.getCenter()) <
-    //     box.getSize().length() / 2 + 1 &&
-    //   cubeMesh.visible
-    // ) {
-    //   console.log('collision detected!')
-    //   // Do something when a collision is detected, such as resetting the scene or playing an animation
-    // }
+   
   })
 
   return (

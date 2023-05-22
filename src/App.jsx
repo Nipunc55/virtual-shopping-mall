@@ -19,6 +19,7 @@ import Loader from './component/Loader'
 import ObjectClickable from './component/ObjectClickable'
 import MassageBox from './component/MassageBox'
 import ToolBox from './component/ToolBox'
+import Item from './component/Item'
 
 function App() {
   const [massage, setMassage] = useState('Adjust the shine of each object : ')
@@ -45,14 +46,15 @@ function App() {
         }}
       />
       {/* <MassageBox massage={massage} /> */}
-      <Canvas className={styles.canvas}>
+      <Canvas alpha='true' className={styles.canvas}>
+        <Item />
         {/* <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} /> */}
         {/* <Ground /> */}
-        {/* <Environment
+        <Environment
           files="https://cdn.jsdelivr.net/gh/Sean-Bradley/React-Three-Fiber-Boilerplate@environment/public/img/venice_sunset_1k.hdr"
           background
           blur={0}
-        /> */}
+        />
         {/* <ObjectClickable /> */}
         {/* <PointerLockControls /> */}
         <FirstPersonCamera />
