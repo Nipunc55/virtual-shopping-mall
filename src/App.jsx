@@ -28,8 +28,8 @@ function App() {
   const [option, setOptionValue] = useState(0)
 
   const room = {
-    position: [0, 0, 0],
-    path: './3Dmodels/room2.gltf',
+    position: [0, -1, 0],
+    path: './3Dmodels/room3.gltf',
     scale: 1,
   }
   const kitchen = {
@@ -48,7 +48,7 @@ function App() {
       />
       {/* <MassageBox massage={massage} /> */}
       <Canvas alpha='true' className={styles.canvas}>
-        <Item />
+        {/* <Item /> */}
         {/* <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} /> */}
         {/* <Ground /> */}
         <Environment
