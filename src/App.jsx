@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,Suspense  } from 'react'
 import './App.css'
 import { Canvas, useFrame } from '@react-three/fiber'
 import Box from './component/Box'
@@ -20,6 +20,7 @@ import ObjectClickable from './component/ObjectClickable'
 import MassageBox from './component/MassageBox'
 import ToolBox from './component/ToolBox'
 import Item from './component/Item'
+import Loading from './component/LoadingScreen'
 
 function App() {
   const [massage, setMassage] = useState('Adjust the shine of each object : ')
@@ -61,6 +62,7 @@ function App() {
         {/* <Model /> */}
 
         {/* <Loader name={loard_buddha} /> */}
+      
         <Loader
           option={option}
           name={room}
@@ -68,6 +70,7 @@ function App() {
             setObj(obj)
           }}
         />
+      
       </Canvas>
     </div>
   )
