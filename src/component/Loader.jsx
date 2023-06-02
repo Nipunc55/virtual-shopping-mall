@@ -5,8 +5,10 @@ import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as THREE from 'three'
 import { OrbitControls, useTexture } from '@react-three/drei'
+import texture1 from '../assets/images/texture2.png'
 
 const Loader = (props) => {
+  const texture = useLoader(THREE.TextureLoader, texture1);
   const [center, setCenter] = useState([0, 0, 0])
   const [clickedObject, setClickedObject] = useState(null)
   const mesh = useRef()
@@ -14,6 +16,10 @@ const Loader = (props) => {
   const { camera } = useThree()
   const gltf = useLoader(GLTFLoader, props.name.path)
   const raycaster = new THREE.Raycaster()
+  const texture_material = new THREE.MeshBasicMaterial({
+    map: texture,
+    transparent: true,
+  });
 
   useEffect(() => {
     const { metalness, roughness } = props.option
@@ -25,7 +31,14 @@ const Loader = (props) => {
     // console.log(center)
   }, [props.option])
   useEffect(() => {
-   if(clickedObject)PlayAnimation()
+   if(clickedObject){
+    const regex = /^frame(\d+)?$/;
+    texture_material.map.rotation = 0;
+
+    if(regex.test(clickedObject.name))    clickedObject.material=texture_material
+   }
+   console.log(clickedObject);
+
   }, [clickedObject])
   
 function PlayAnimation(){
@@ -85,7 +98,7 @@ function PlayAnimation(){
   return (
     <>
       <pointLight position={[0, 4, 0]} color="#C9FF7C" intensity={0.6} />
-      <pointLight position={[0, 1, 0]} color="#001BFF" intensity={0.8} />
+      <pointLight position={[0, 1, 0]} color="#001BFF" intensity={0.6} />
       {/* <ambientLight intensity={0.2} /> */}
       <directionalLight color="#ffffff" intensity={0.5} position={[0, 1, 0]} />
       <OrbitControls

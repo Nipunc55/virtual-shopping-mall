@@ -12,9 +12,6 @@ const Item = () => {
   const texture_material = new THREE.MeshBasicMaterial({
     map: texture,
     transparent: true,
-   // Adjust the threshold as needed
-//   side: THREE.DoubleSide,
-    // You can adjust other material properties as needed
   });
    const transparent_material = new THREE.MeshBasicMaterial({
     color: 0xffffff,

@@ -28,7 +28,7 @@ function App() {
 
   const room = {
     position: [0, 0, 0],
-    path: './3Dmodels/room_new.gltf',
+    path: './3Dmodels/room2.gltf',
     scale: 1,
   }
   const kitchen = {
