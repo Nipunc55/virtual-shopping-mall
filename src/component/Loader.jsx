@@ -23,13 +23,13 @@ const Loader = (props) => {
 		transparent: true,
 	});
 	useEffect(() => {
-		console.log(gltf.scene.children);
+		console.log(gltf);
 		if (gltf.scene.children.length > 0) {
 			gltf.scene.children.forEach((child) => {
 				if (child.name === 'dream-catcher') {
 					const worldPosition = new THREE.Vector3().copy(child.position);
 					child.parent.localToWorld(worldPosition);
-					setCenter(worldPosition);
+					//setCenter(worldPosition);
 				}
 			});
 		}
@@ -53,42 +53,42 @@ const Loader = (props) => {
 				clickedObject.material = texture_material;
 		}
 
-		console.log(clickedObject);
+		//console.log(clickedObject);
 	}, [clickedObject]);
 
 	function PlayAnimation() {
 		console.log(gltf.scene.children);
-		if (gltf.scene.children.length > 0) {
-			gltf.scene.children.forEach((child) => {
-				if (child.animations.length) {
-					mixer = new THREE.AnimationMixer(child);
-					const action = mixer.clipAction(child.animations[0]);
-					action.play();
-					// action.halt(8)
-					child.animations.forEach((clip) => {
-						const action = mixer.clipAction(clip);
-						console.log(clip);
-						action.play();
+		// if (gltf.scene.children.length > 0) {
+		// 	gltf.scene.children.forEach((child) => {
+		// 		if (child.animations.length > 0) {
+		// 			mixer = new THREE.AnimationMixer(child);
+		// 			const action = mixer.clipAction(child.animations[0]);
+		// 			action.play();
+		// 			// action.halt(8)
+		// 			child.animations.forEach((clip) => {
+		// 				const action = mixer.clipAction(clip);
+		// 				console.log(clip);
+		// 				action.play();
 
-						// action.halt(props.aniamtionDuration)
-					});
-				}
+		// 				// action.halt(props.aniamtionDuration)
+		// 			});
+		// 		}
+		// 	});
+		// }
+
+		if (gltf.scene) {
+			mesh.current = new THREE.AnimationMixer(gltf.scene);
+			const action = mesh.current.clipAction(gltf.animations[0]);
+			action.play();
+			// action.halt(8)
+			gltf.animations.forEach((clip) => {
+				const action = mesh.current.clipAction(clip);
+				console.log(clip);
+				action.play();
+
+				// action.halt(props.aniamtionDuration)
 			});
 		}
-
-		//  if (clickedObject.animations.length) {
-		//       mixer = new THREE.AnimationMixer(gltf.scene)
-		//       const action = mixer.clipAction(gltf.animations[0])
-		//       action.play()
-		//       // action.halt(8)
-		//       gltf.animations.forEach((clip) => {
-		//         const action = mixer.clipAction(clip)
-		//         console.log(clip)
-		//          action.play()
-
-		//         // action.halt(props.aniamtionDuration)
-		//       })
-		//     }
 	}
 	/**
 	 * get the center of clicked object
@@ -125,6 +125,9 @@ const Loader = (props) => {
 	//*********/
 	useFrame((state, delta) => {
 		orbitRef.current.update();
+		if (mesh.current) {
+			mesh.current.update(delta);
+		}
 	});
 
 	return (
