@@ -20,7 +20,18 @@ const Loader = (props) => {
     map: texture,
     transparent: true,
   });
-
+  useEffect(() => {
+    console.log(gltf.scene.children)
+    if(gltf.scene.children.length>0){
+    gltf.scene.children.forEach((child) => {
+      if (child.name === 'dream-catcher') {
+        const worldPosition = new THREE.Vector3().copy(child.position)
+        child.parent.localToWorld(worldPosition)
+        setCenter(worldPosition)
+      }
+    })
+    }
+  }, [gltf])
   useEffect(() => {
     const { metalness, roughness } = props.option
     if (clickedObject) {
@@ -37,6 +48,7 @@ const Loader = (props) => {
 
     if(regex.test(clickedObject.name))    clickedObject.material=texture_material
    }
+
    console.log(clickedObject);
 
   }, [clickedObject])
@@ -80,10 +92,11 @@ function PlayAnimation(){
         props.onDataReceve(clickedObject)
         setClickedObject(clickedObject)
         //clickedObject.material.metalness = 1
-        //console.log(clickedObject)
+        console.log(name)
         const worldPosition = new THREE.Vector3().copy(clickedObject.position)
         clickedObject.parent.localToWorld(worldPosition)
-        setCenter(worldPosition)
+       if(name=='dream-catcher')setCenter(worldPosition)
+        
       }
     }
   }
@@ -92,6 +105,7 @@ function PlayAnimation(){
   //*********/
   useFrame((state, delta) => {
     orbitRef.current.update()
+    
    
   })
 

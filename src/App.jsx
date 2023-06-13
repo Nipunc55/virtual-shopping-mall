@@ -28,8 +28,8 @@ function App() {
   const [option, setOptionValue] = useState(0)
 
   const room = {
-    position: [0, -1, 0],
-    path: './3Dmodels/room3.gltf',
+    position: [2, -1, 2],
+    path: './3Dmodels/city.gltf',
     scale: 1,
   }
   const kitchen = {
@@ -40,12 +40,12 @@ function App() {
   return (
     <div className="App">
       {/* <Joystick /> */}
-      <ToolBox
+      {/* <ToolBox
         obj={obj}
         optionValue={(data) => {
           setOptionValue(data)
         }}
-      />
+      /> */}
       {/* <MassageBox massage={massage} /> */}
       <Canvas alpha='true' className={styles.canvas}>
         {/* <Item /> */}
