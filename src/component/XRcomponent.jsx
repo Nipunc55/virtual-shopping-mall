@@ -14,10 +14,14 @@ const XRScene = () => {
 
   return (
     <>
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
-      <XR>
-        <Box ref={cubeRef} position={[0, 0, -5]} />
+     <XR>
+        <ambientLight />
+        <pointLight position={[10, 10, 10]} />
+        <mesh ref={cubeRef} position={[0, 0, -5]}>
+          <boxGeometry args={[1, 1, 1]} />
+          <meshStandardMaterial color="red" />
+        </mesh>
+        <primitive object={document.querySelector('video')} attach="background" />
       </XR>
     </>
   );
