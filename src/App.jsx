@@ -23,6 +23,7 @@ import MassageBox from './component/MassageBox';
 import ToolBox from './component/ToolBox';
 import Item from './component/Item';
 import Loading from './component/LoadingScreen';
+import XRScene from './component/XRcomponent';
 
 function App() {
 	const [massage, setMassage] = useState('Adjust the shine of each object : ');
@@ -53,25 +54,26 @@ function App() {
 				{/* <Item /> */}
 				{/* <Box randomBoxes={{ boxCount: 1, isRandomBox: true }} /> */}
 				{/* <Ground /> */}
-				<Environment
+				{/* <Environment
 					files='https://cdn.jsdelivr.net/gh/Sean-Bradley/React-Three-Fiber-Boilerplate@environment/public/img/venice_sunset_1k.hdr'
 					background
 					blur={0}
-				/>
+				/> */}
 				{/* <ObjectClickable /> */}
 				{/* <PointerLockControls /> */}
-				<FirstPersonCamera />
+				{/* <FirstPersonCamera /> */}
 				{/* <Model /> */}
 
 				{/* <Loader name={loard_buddha} /> */}
 
-				<Loader
+				{/* <Loader
 					option={option}
 					name={room}
 					onDataReceve={(obj) => {
 						setObj(obj);
 					}}
-				/>
+				/> */}
+				<XRScene />
 			</Canvas>
 		</div>
 	);

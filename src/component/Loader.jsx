@@ -11,6 +11,7 @@ import texture1 from '../assets/images/texture2.png';
 
 const Loader = (props) => {
 	const texture = useLoader(THREE.TextureLoader, texture1);
+	const [pointLightPos, setPointLightPos] = useState([4, 0, 4]);
 	const [center, setCenter] = useState([0, 0, 0]);
 	const [clickedObject, setClickedObject] = useState(null);
 	const mesh = useRef();
@@ -22,8 +23,22 @@ const Loader = (props) => {
 		map: texture,
 		transparent: true,
 	});
+
+	function getWorldPosition(child) {
+		const worldPosition = new THREE.Vector3().copy(child.position);
+		child.parent.localToWorld(worldPosition);
+		return worldPosition;
+	}
+
 	useEffect(() => {
-		console.log(gltf);
+		console.log(
+			getWorldPosition(
+				gltf.scene.children.filter((child) => {
+					return child.name === 'Point';
+				})[0]
+			)
+		);
+
 		if (gltf.scene.children.length > 0) {
 			gltf.scene.children.forEach((child) => {
 				if (child.name === 'dream-catcher') {
@@ -132,8 +147,8 @@ const Loader = (props) => {
 
 	return (
 		<>
-			<pointLight position={[0, 4, 0]} color='#C9FF7C' intensity={0.6} />
-			<pointLight position={[0, 1, 0]} color='#001BFF' intensity={0.6} />
+			<pointLight position={pointLightPos} color='#001BFF' intensity={0.6} />
+			{/* <pointLight position={[pointLightPos]} color='#001BFF' intensity={0.6} /> */}
 			{/* <ambientLight intensity={0.2} /> */}
 			<directionalLight color='#ffffff' intensity={0.5} position={[0, 1, 0]} />
 			<OrbitControls
