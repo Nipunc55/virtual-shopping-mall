@@ -9,10 +9,10 @@ function GameLoader() {
 	const [isLoaded, setLoaded] = useState(false);
 	const loadingBar = useRef(null);
 	const unityContext = new UnityContext({
-		loaderUrl: '../Build/WebBuilds.loader.js',
-		dataUrl: '../Build/WebBuilds.data.unityweb',
-		frameworkUrl: '../Build/WebBuilds.framework.js.unityweb',
-		codeUrl: '../Build/WebBuilds.wasm.unityweb',
+		loaderUrl: '../Build/Build.loader.js',
+		dataUrl: '../Build/Build.data.unityweb',
+		frameworkUrl: '../Build/Build.framework.js.unityweb',
+		codeUrl: '../Build/Build.wasm.unityweb',
 	});
 
 	unityContext.on('progress', (progression) => {
